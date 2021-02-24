@@ -1,22 +1,28 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/coaches' },
-    { path: '/coaches', component: null },
+    { path: '/coaches', component: () => import('@/pages/coaches/CoachList') },
     {
       path: '/coaches/:id',
-      component: null,
+      component: () => import('@/pages/coaches/CoachDetail'),
       children: {
         path: '/contact',
-        component: null,
-      },
+        component: () => import('@/pages/requests/ContactCoach')
+      }
     },
-    { path: '/register', component: null },
-    { path: '/requsest', component: null },
-    { path: '/:notFound(.*)', component: null },
-  ],
-});
+    {
+      path: '/register',
+      component: () => import('@/pages/coaches/CoachRegistration')
+    },
+    {
+      path: '/requsest',
+      component: () => import('@/pages/requests/RequsetReceived')
+    },
+    { path: '/:notFound(.*)', component: () => import('@/pages/NotFound') }
+  ]
+})
 
-export default router;
+export default router
