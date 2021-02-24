@@ -8,10 +8,12 @@ const router = createRouter({
     {
       path: '/coaches/:id',
       component: () => import('@/pages/coaches/CoachDetail'),
-      children: {
-        path: '/contact',
-        component: () => import('@/pages/requests/ContactCoach')
-      }
+      children: [
+        {
+          path: '/contact',
+          component: () => import('@/pages/requests/ContactCoach')
+        }
+      ]
     },
     {
       path: '/register',
@@ -19,7 +21,7 @@ const router = createRouter({
     },
     {
       path: '/requsest',
-      component: () => import('@/pages/requests/RequsetReceived')
+      component: () => import('@/pages/requests/RequestReceived')
     },
     { path: '/:notFound(.*)', component: () => import('@/pages/NotFound') }
   ]
