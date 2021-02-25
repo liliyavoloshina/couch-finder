@@ -1,13 +1,7 @@
 <template>
-  <v-app>
-    <Header />
+  <Header />
 
-    <v-main>
-      <v-container fluid>
-        <router-view></router-view>
-      </v-container>
-    </v-main>
-  </v-app>
+  <router-view></router-view>
 </template>
 
 <script>
@@ -18,3 +12,11 @@ export default {
   }
 }
 </script>
+
+<style>
+body {
+  margin: 0;
+}
+
+
+</style>

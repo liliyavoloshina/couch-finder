@@ -4,26 +4,38 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', redirect: '/coaches' },
-    { path: '/coaches', component: () => import('@/pages/coaches/CoachList') },
+    {
+      path: '/coaches',
+      name: 'Coaches',
+      component: () => import('@/pages/coaches/CoachList')
+    },
     {
       path: '/coaches/:id',
+      name: 'CoachDetail',
       component: () => import('@/pages/coaches/CoachDetail'),
       children: [
         {
-          path: '/contact',
+          path: 'contact',
+          name: 'ContactCoach',
           component: () => import('@/pages/requests/ContactCoach')
         }
       ]
     },
     {
       path: '/register',
+      name: 'CoachRegistration',
       component: () => import('@/pages/coaches/CoachRegistration')
     },
     {
-      path: '/requsest',
+      path: '/requests',
+      name: 'RequestReceived',
       component: () => import('@/pages/requests/RequestReceived')
     },
-    { path: '/:notFound(.*)', component: () => import('@/pages/NotFound') }
+    {
+      path: '/:notFound(.*)',
+      name: 'NotFound',
+      component: () => import('@/pages/NotFound')
+    }
   ]
 })
 
