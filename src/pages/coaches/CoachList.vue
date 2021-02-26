@@ -6,7 +6,7 @@
     <base-card>
       <div class="controls">
         <base-button mode="outline">refresh</base-button>
-        <base-button link :toLink="{ name: 'CoachRegistration' }"
+        <base-button v-if="!isCoach" link :toLink="{ name: 'CoachRegistration' }"
           >register as coach</base-button
         >
       </div>
@@ -40,7 +40,7 @@ export default {
   computed: {
     filteredCoaches() {
       const coaches = this.$store.getters['coaches/coaches']
-      return coaches.filter(coach => {
+      return coaches.filter((coach) => {
         if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
           return true
         }
@@ -55,6 +55,9 @@ export default {
     },
     hasCoaches() {
       return this.$store.getters['coaches/hasCoaches']
+    },
+    isCoach() {
+      return this.$store.getters['coaches/isCoach']
     }
   },
   methods: {
