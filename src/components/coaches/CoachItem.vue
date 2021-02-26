@@ -8,8 +8,16 @@
       </span>
     </div>
     <div class="actions">
-      <router-link :to="{ name: 'ContactCoach', params: {id: coach.id} }">Contact</router-link>
-      <router-link :to="{ name: 'CoachDetail', params: {id: coach.id} } ">View Details</router-link>
+      <base-button
+        :link="true"
+        :toLink="{ name: 'ContactCoach', params: { id: coach.id } }"
+        >Contact</base-button
+      >
+      <base-button
+        :link="true"
+        :toLink="{ name: 'CoachDetail', params: { id: coach.id } }"
+        >View Details</base-button
+      >
     </div>
   </li>
 </template>

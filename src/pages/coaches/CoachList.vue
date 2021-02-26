@@ -1,20 +1,24 @@
 <template>
-  <section>FILTER</section>
   <section>
-    <div class="controls">
-      <button>refresh</button>
-      <router-link :to="{ name: 'CoachRegistration' }"
-        >register as coach</router-link
-      >
-    </div>
-    <ul v-if="hasCoaches">
-      <CoachItem
-        v-for="coach in filteredCoaches"
-        :key="coach.id"
-        :coach="coach"
-      />
-    </ul>
-    <h3 v-else>No coaches...</h3>
+    <base-card>
+    Filters
+    </base-card>
+  </section>
+  <section>
+    <base-card>
+      <div class="controls">
+        <base-button>refresh</base-button>
+        <base-button link :toLink="{ name: 'CoachRegistration' }">register as coach</base-button>
+      </div>
+      <ul v-if="hasCoaches">
+        <CoachItem
+          v-for="coach in filteredCoaches"
+          :key="coach.id"
+          :coach="coach"
+        />
+      </ul>
+      <h3 v-else>No coaches...</h3>
+    </base-card>
   </section>
 </template>
 

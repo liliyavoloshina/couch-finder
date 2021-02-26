@@ -2,7 +2,7 @@
 <router-view></router-view>
   <div>
     Coach Deatil
-    <router-link :to="{name: 'ContactCoach'}">Contact</router-link>
+    <base-button link :toLink="{name: 'ContactCoach'}">Contact</base-button>
   </div>
 </template>
 

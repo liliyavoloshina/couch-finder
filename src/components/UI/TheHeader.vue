@@ -26,7 +26,7 @@ export default {
 header {
   width: 100%;
   height: 5rem;
-  background-color: #9E2F8C;
+  background-color: #462459;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@ header {
 
 header a {
   text-decoration: none;
-  color: #F9C2F0;
+  color: #D9D875;
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border: 1px solid transparent;
@@ -43,7 +43,7 @@ header a {
 a:active,
 a:hover,
 a.router-link-active {
-  border: 1px solid #F9C2F0;
+  border: 1px solid #D9D875;
 }
 
 h1 {
@@ -51,7 +51,7 @@ h1 {
 }
 
 h1 a {
-  color: white;
+  color: #D9D875;
   margin: 0;
 }
 
