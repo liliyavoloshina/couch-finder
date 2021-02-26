@@ -8,42 +8,11 @@
         </div>
       </router-link>
     </template>
-    <template #end> </template>
+    <!-- <template #end> </template> -->
   </Menubar>
 </template>
 
 <script>
-import Menubar from 'primevue/menubar'
 export default {
-  name: 'TheHeader',
-  components: { Menubar },
-  data() {
-    return {
-      items: [
-        {
-          label: 'All Coaches',
-          icon: 'pi pi-fw pi-users',
-          to: '/requests',
-          command: (e) => { console.log(e.item)}
-        },
-         {
-          label: 'Requests',
-          icon: 'pi pi-fw pi-envelope',
-          to: '/requests'
-        },
-        {
-          label: 'Users',
-          icon: 'pi pi-fw pi-user'
-        }
-      ]
-    }
-  }
-}
+  name: 'TheHeader'}
 </script>
-
-<style lang="css">
-.pi.pi-fw.pi-compass {
-  font-size: 2rem;
-  color: blue;
-}
-</style>
