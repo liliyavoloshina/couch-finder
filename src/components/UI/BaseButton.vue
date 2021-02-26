@@ -28,14 +28,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/variables';
 button,
 a {
   text-decoration: none;
   padding: 0.1rem 1rem;
   font: inherit;
-  background-color: #462459;
-  border: 1px solid #462459;
-  color: #d9d875;
+  background-color: $base-bg-color;
+  border: 1px solid $base-bg-color;
+  color: $base-text-color;
   cursor: pointer;
   border-radius: 30px;
   margin-right: 0.5rem;
@@ -46,26 +47,26 @@ a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: #382543;
-  border-color: #382543;
+  background-color: $sec-bg-color;
+  border-color: $sec-bg-color;
 }
 
 .flat {
   background-color: transparent;
-  color: #3a0061;
+  color: $sec-bg-color;
   border: none;
 }
 
 .outline {
   background-color: transparent;
-  border-color: #382543;
-  color: #382543;
+  border-color: $base-bg-color;
+  color: $base-bg-color;
 }
 
 .flat:hover,
 .flat:active,
 .outline:hover,
 .outline:active {
-  background-color: #edd2ff;
+  background-color: $sec-bg-color;
 }
 </style>
