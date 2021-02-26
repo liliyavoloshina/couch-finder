@@ -3,9 +3,7 @@
     <h3>{{ fullName }}</h3>
     <h4>{{ coach.hourlyRate }}/hour</h4>
     <div>
-      <span v-for="area in coach.areas" :key="area">
-        {{ area }}
-      </span>
+      <base-badge v-for="area in coach.areas" :key="area" :title="area" :type="area"></base-badge>
     </div>
     <div class="actions">
       <base-button

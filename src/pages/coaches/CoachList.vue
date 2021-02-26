@@ -7,7 +7,7 @@
   <section>
     <base-card>
       <div class="controls">
-        <base-button>refresh</base-button>
+        <base-button mode="outline">refresh</base-button>
         <base-button link :toLink="{ name: 'CoachRegistration' }">register as coach</base-button>
       </div>
       <ul v-if="hasCoaches">

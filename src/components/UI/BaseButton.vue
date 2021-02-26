@@ -34,9 +34,9 @@ a {
   text-decoration: none;
   padding: 0.1rem 1rem;
   font: inherit;
-  background-color: $base-bg-color;
-  border: 1px solid $base-bg-color;
-  color: $base-text-color;
+  background-color: $base-dark-color;
+  border: 1px solid $base-dark-color;
+  color: $base-yellow-color;
   cursor: pointer;
   border-radius: 30px;
   margin-right: 0.5rem;
@@ -47,26 +47,18 @@ a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: $sec-bg-color;
-  border-color: $sec-bg-color;
-}
-
-.flat {
-  background-color: transparent;
-  color: $sec-bg-color;
-  border: none;
+  background-color: $sec-light-color;
 }
 
 .outline {
   background-color: transparent;
-  border-color: $base-bg-color;
-  color: $base-bg-color;
+  border-color: $base-dark-color;
+  color: $base-dark-color;
 }
 
-.flat:hover,
-.flat:active,
 .outline:hover,
 .outline:active {
-  background-color: $sec-bg-color;
+  background-color: $base-dark-color;
+  color: $base-yellow-color;
 }
 </style>
