@@ -5,3 +5,10 @@
     <router-link :to="{name: 'ContactCoach'}">Contact</router-link>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'CoachDetail',
+  props: ['id']
+}
+</script>
