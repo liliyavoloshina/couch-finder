@@ -3,10 +3,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: '/coaches' },
+    { path: '/', name: 'Home', redirect: '/coaches' },
     {
       path: '/coaches',
-      name: 'Coaches',
+      name: 'CoachList',
       component: () => import('@/pages/coaches/CoachList')
     },
     {

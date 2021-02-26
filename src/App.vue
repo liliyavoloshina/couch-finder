@@ -1,6 +1,5 @@
 <template>
   <Header />
-
   <router-view></router-view>
 </template>
 
@@ -14,6 +13,16 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Truculenta:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Truculenta', sans-serif;
+}
+
 body {
   margin: 0;
 }
