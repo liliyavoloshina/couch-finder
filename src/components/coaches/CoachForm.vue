@@ -95,7 +95,7 @@
         Areas of Development is required!
       </p>
     </div>
-    <!-- <p v-if="!validateForm()" class="error-message">Please fix above errors!</p> -->
+    <p v-if="!isFormValid" class="error-message">Please fix above errors!</p>
     <base-button :disabled="isFormValid">Register</base-button>
   </form>
 </template>

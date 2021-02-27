@@ -18,6 +18,7 @@ const router = createRouter({
         {
           path: 'contact',
           name: 'ContactCoach',
+          props: true,
           component: () => import('@/pages/requests/ContactCoach')
         }
       ]

@@ -25,7 +25,7 @@ export default {
     },
     disabled: {
       type: Boolean,
-      default: null
+      default: true
     }
   }
 }
