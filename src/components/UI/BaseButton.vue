@@ -1,5 +1,5 @@
 <template>
-  <button v-if="!link" :class="mode">
+  <button v-if="!link" :class="[mode, {'disabled': !disabled}]">
     <slot></slot>
   </button>
   <router-link v-else :to="toLink" :class="mode"><slot></slot></router-link>
@@ -21,6 +21,10 @@ export default {
     },
     mode: {
       type: String,
+      default: null
+    },
+    disabled: {
+      type: Boolean,
       default: null
     }
   }
@@ -60,5 +64,14 @@ button:active {
 .outline:active {
   background-color: $base-dark-color;
   color: $base-yellow-color;
+}
+
+.disabled {
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+  &:hover {
+    background-color: grey;
+  }
 }
 </style>
