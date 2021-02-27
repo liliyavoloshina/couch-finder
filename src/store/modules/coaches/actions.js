@@ -1,7 +1,7 @@
 export default {
-  addCoach(context, data) {
+  async addCoach(context, data) {
+    const userId = context.rootGetters.userId
     const coachData = {
-      id: context.rootGetters.userId,
       firstName: data.firstName,
       lastName: data.lastName,
       areas: data.areas,
@@ -9,6 +9,50 @@ export default {
       hourlyRate: data.rate
     }
 
-    context.commit('addCoach', coachData)
+    const response = await fetch(
+      `${process.env.VUE_APP_FIREBASE_URL}/coaches/${userId}.json`,
+      {
+        method: 'PUT',
+        body: JSON.stringify(coachData)
+      }
+    )
+
+    const responseData = await response.json()
+
+    if (!response.ok) {
+      const error = new Error(responseData.message || 'Failed to add')
+      throw error
+    }
+
+    context.commit('addCoach', {
+      ...coachData,
+      id: userId
+    })
+  },
+  async loadCoaches({ commit }) {
+    const response = await fetch(
+      `${process.env.VUE_APP_FIREBASE_URL}/coaches.json`
+    )
+
+    const responseData = await response.json()
+
+    if (!response.ok) {
+      const error = new Error(responseData.message || 'Failed to fetch')
+      throw error
+    }
+
+    const coaches = []
+    for (let key in responseData) {
+      const newCoach = {
+        id: key,
+        firstName: responseData[key].firstName,
+        lastName: responseData[key].lastName,
+        areas: responseData[key].areas,
+        description: responseData[key].description,
+        hourlyRate: responseData[key].hourlyRate
+      }
+      coaches.push(newCoach)
+    }
+    commit('setCoaches', coaches)
   }
 }
