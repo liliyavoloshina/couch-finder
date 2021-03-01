@@ -1,5 +1,9 @@
 <template>
-  <form @submit.prevent="formSubmit">
+  <base-dialog :show="!!error" :title="'Error'" @close="handleErrorDialog">
+    <p>{{ error }}</p>
+  </base-dialog>
+  <base-spinner v-if="isLoading" />
+  <form v-else @submit.prevent="formSubmit">
     <div class="form-control">
       <label for="email">Your E-mail:</label>
       <input v-model.trim="email" type="text" id="email" />
@@ -12,7 +16,9 @@
         id="message"
         rows="5"
       ></textarea>
-      <p v-if="!isFormValid" class="errors">Please type correct E-mail and non-empty message...</p>
+      <p v-if="!isFormValid" class="errors">
+        Please type correct E-mail and non-empty message...
+      </p>
     </div>
     <div class="actions">
       <base-button mode="outline">Send message</base-button>
@@ -32,11 +38,13 @@ export default {
     return {
       email: '',
       message: '',
-      isFormValid: true
+      isFormValid: true,
+      isLoading: false,
+      error: null
     }
   },
   methods: {
-    formSubmit() {
+    async formSubmit() {
       this.isFormValid = true
       if (
         this.email === '' ||
@@ -51,8 +59,18 @@ export default {
         email: this.email,
         message: this.message
       }
-      this.$store.dispatch('requests/addRequest', sendingData)
-      this.$router.replace({name: 'Home'})
+      try {
+        this.isLoading = true
+        await this.$store.dispatch('requests/addRequest', sendingData)
+      } catch (e) {
+        this.isLoading = false
+        this.error = e.message || 'Something went wrong...'
+      }
+      this.isLoading = false
+      this.$router.replace({ name: 'Home' })
+    },
+    handleErrorDialog() {
+      this.error = null
     }
   }
 }
