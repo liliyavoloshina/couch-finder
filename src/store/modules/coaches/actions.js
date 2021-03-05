@@ -1,6 +1,7 @@
 export default {
   async addCoach(context, data) {
     const userId = context.rootGetters.userId
+    const token = context.rootGetters.token
     const coachData = {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -10,7 +11,7 @@ export default {
     }
 
     const response = await fetch(
-      `${process.env.VUE_APP_FIREBASE_URL}/coaches/${userId}.json`,
+      `${process.env.VUE_APP_FIREBASE_URL}/coaches/${userId}.json?auth=${token}`,
       {
         method: 'PUT',
         body: JSON.stringify(coachData)

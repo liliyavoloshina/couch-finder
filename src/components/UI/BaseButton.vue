@@ -56,8 +56,8 @@ button:active {
 
 .outline {
   background-color: transparent;
-  border-color: $base-dark-color;
-  color: $base-dark-color;
+  border: 1px solid $base-yellow-color;
+  color: $base-yellow-color;
 }
 
 .outline:hover,

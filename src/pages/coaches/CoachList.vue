@@ -13,11 +13,18 @@
             >refresh</base-button
           >
           <base-button
-            v-if="!isCoach && !isLoading"
+            v-if="!isCoach && !isLoading && isLoggedIn"
             link
             :toLink="{ name: 'CoachRegistration' }"
-            >register as coach</base-button
-          >
+            >register as coach
+          </base-button>
+
+          <base-button
+            v-if="!isLoggedIn"
+            link
+            :toLink="{ name: 'UserAuth' }"
+            >Login
+          </base-button>
         </div>
         <base-spinner v-if="isLoading" />
         <ul v-else-if="hasCoaches">
@@ -71,6 +78,9 @@ export default {
     },
     isCoach() {
       return this.$store.getters['coaches/isCoach']
+    },
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated
     }
   },
   created() {

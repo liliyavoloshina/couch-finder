@@ -8,9 +8,13 @@
         <li>
           <router-link :to="{ name: 'CoachList' }">All Coaches</router-link>
         </li>
-        <li>
+        <li v-if="isLoggedIn">
           <router-link :to="{ name: 'RequestReceived' }">Requests</router-link>
         </li>
+        <li v-else>
+          <router-link :to="{ name: 'UserAuth' }">Login</router-link>
+        </li>
+        <base-button v-if="isLoggedIn" @click="logout" mode="outline">Logout</base-button>
       </ul>
     </nav>
   </header>
@@ -18,7 +22,17 @@
 
 <script>
 export default {
-  name: 'TheHeader'
+  name: 'TheHeader',
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+    }
+  }
 }
 </script>
 
