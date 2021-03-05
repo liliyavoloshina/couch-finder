@@ -29,7 +29,10 @@ export default {
       id: userId
     })
   },
-  async loadCoaches({ commit }) {
+  async loadCoaches(context, payload) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) {
+      return
+    }
     const response = await fetch(
       `${process.env.VUE_APP_FIREBASE_URL}/coaches.json`
     )
@@ -53,6 +56,7 @@ export default {
       }
       coaches.push(newCoach)
     }
-    commit('setCoaches', coaches)
+    context.commit('setCoaches', coaches)
+    context.commit('setFetchTimestamp')
   }
 }
