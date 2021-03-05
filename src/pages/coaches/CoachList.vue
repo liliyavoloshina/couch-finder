@@ -1,32 +1,36 @@
 <template>
-  <base-dialog :show="!!error" :title="'Error'" @close="handleErrorDialog">
-    <p>{{ error }}</p>
-  </base-dialog>
-  <section>
-    <CoachFilter @change-filter="setFilters" />
-  </section>
-  <section>
-    <base-card>
-      <div class="controls">
-        <base-button mode="outline" @click="loadCoaches(true)">refresh</base-button>
-        <base-button
-          v-if="!isCoach && !isLoading"
-          link
-          :toLink="{ name: 'CoachRegistration' }"
-          >register as coach</base-button
-        >
-      </div>
-      <base-spinner v-if="isLoading" />
-      <ul v-else-if="hasCoaches">
-        <CoachItem
-          v-for="coach in filteredCoaches"
-          :key="coach.id"
-          :coach="coach"
-        />
-      </ul>
-      <h3 v-else>No coaches...</h3>
-    </base-card>
-  </section>
+  <div>
+    <base-dialog :show="!!error" :title="'Error'" @close="handleErrorDialog">
+      <p>{{ error }}</p>
+    </base-dialog>
+    <section>
+      <CoachFilter @change-filter="setFilters" />
+    </section>
+    <section>
+      <base-card>
+        <div class="controls">
+          <base-button mode="outline" @click="loadCoaches(true)"
+            >refresh</base-button
+          >
+          <base-button
+            v-if="!isCoach && !isLoading"
+            link
+            :toLink="{ name: 'CoachRegistration' }"
+            >register as coach</base-button
+          >
+        </div>
+        <base-spinner v-if="isLoading" />
+        <ul v-else-if="hasCoaches">
+          <CoachItem
+            v-for="coach in filteredCoaches"
+            :key="coach.id"
+            :coach="coach"
+          />
+        </ul>
+        <h3 v-else>No coaches...</h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -79,7 +83,9 @@ export default {
     async loadCoaches(refresh = false) {
       this.isLoading = true
       try {
-        await this.$store.dispatch('coaches/loadCoaches', {forceRefresh: refresh})
+        await this.$store.dispatch('coaches/loadCoaches', {
+          forceRefresh: refresh
+        })
       } catch (e) {
         this.error = e.message || 'Something went wrong...'
       }
