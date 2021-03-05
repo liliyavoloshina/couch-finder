@@ -34,6 +34,11 @@ const router = createRouter({
       component: () => import('@/pages/requests/RequestReceived')
     },
     {
+      path: '/auth',
+      name: 'UserAuth',
+      component: () => import('@/pages/auth/UserAuth')
+    },
+    {
       path: '/:notFound(.*)',
       name: 'NotFound',
       component: () => import('@/pages/NotFound')
