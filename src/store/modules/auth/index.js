@@ -5,7 +5,7 @@ import getters from '@/store/modules/auth/getters'
 export default {
   // namespaced: true,
   state() {
-    return { userId: null, token: null, tokenExpiration: null }
+    return { userId: null, token: null, didAutoLogout: false }
   },
   mutations,
   actions,

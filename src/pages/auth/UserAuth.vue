@@ -75,9 +75,11 @@ export default {
       }
       try {
         if (this.mode === 'login') {
-          await this.$store.dispatch('login', formData)
+          formData.mode = 'login'
+          await this.$store.dispatch('auth', formData)
         } else {
-          await this.$store.dispatch('signup', formData)
+          formData.mode = 'signup'
+          await this.$store.dispatch('auth', formData)
         }
         this.$router.replace({ name: 'CoachList' })
       } catch (e) {

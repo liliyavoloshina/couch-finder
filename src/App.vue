@@ -12,6 +12,21 @@ import Header from '@/components/UI/TheHeader'
 export default {
   components: {
     Header
+  },
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout
+    }
+  },
+  created() {
+    this.$store.dispatch('tryLogin')
+  },
+  watch: {
+    didAutoLogout(curVal, oldVal) {
+      if (curVal && curVal !== oldVal) {
+        this.$router.replace({ name: 'UserAuth' })
+      }
+    }
   }
 }
 </script>
@@ -31,7 +46,7 @@ html {
 body {
   margin: 0;
 }
-// start anim 
+// start anim
 .route-enter-from {
   opacity: 0;
   transform: translateY(-30px);
@@ -46,7 +61,7 @@ body {
 .route-leave-active {
   transition: all 0.3s ease-in;
 }
-// end anim 
+// end anim
 .route-enter-to,
 .route-leave-from {
   opacity: 1;
