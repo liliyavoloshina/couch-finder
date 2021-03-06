@@ -68,25 +68,22 @@ export default {
       }
 
       this.isLoading = true
+
       const formData = {
         email: this.email,
         password: this.password
       }
-      if (this.mode === 'login') {
-        try {
+      try {
+        if (this.mode === 'login') {
           await this.$store.dispatch('login', formData)
-        } catch (e) {
-          this.error = e
-        }
-        this.isLoading = false
-      } else {
-        try {
+        } else {
           await this.$store.dispatch('signup', formData)
-        } catch (e) {
-          this.error = e
         }
-        this.isLoading = false
+        this.$router.replace({ name: 'CoachList' })
+      } catch (e) {
+        this.error = e
       }
+      this.isLoading = false
     },
     switchFormMode() {
       if (this.mode === 'signup') {
